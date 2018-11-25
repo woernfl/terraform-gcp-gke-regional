@@ -4,8 +4,9 @@ provider "google-beta" {
   project     = "${var.gcp_project_id}"
 }
 
-module "gke" {
-  source = "../.."
+module "gke-regional" {
+  source  = "woernfl/gke-regional/gcp"
+  version = "1.0.1"
 
   gcp_project_id                      = "${var.gcp_project_id}"
   cluster_name                        = "${var.cluster_name}"
