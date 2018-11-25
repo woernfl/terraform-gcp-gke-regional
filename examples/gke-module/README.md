@@ -11,7 +11,6 @@ A terraform module to create a managed Kubernetes cluster on GCP GKE.
 
 ## Create GKE cluster
 
-An example of how to use this module is available in the [examples/gke-module](examples/gke-module/) folder.
 You can use the default terraform.tfvars.example file (just need to add the path to the auth file, precise the GCP project ID and remove the .example from the file name). If you prefere to use cmd arguments, that's up to you.
 
 Initiatialize Terraform project by importing the Google Cloud provider

@@ -1,0 +1,27 @@
+path_gcp_auth_json_file = ""
+
+gcp_project_id = ""
+
+cluster_name = "cluster-1"
+
+initial_node_count = "1"
+
+region = "europe-west1"
+
+kube_version = "1.10"
+
+image_type = "COS"
+
+machine_type = "f1-micro"
+
+preemptible_node = true
+
+daily_maintenance_window_start_time = "00:00"
+
+http_load_balancing = false
+
+horizontal_pod_autoscaling = false
+
+kubernetes_dashboard = true
+
+network_policy_config = false
