@@ -62,4 +62,4 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 
 ## Want more
 
-You have a project? Want to discuss? Contact me at <hello@onmyown.io>
+You have a project? Want to discuss? Contact me at [hello@onmyown.io](hello@onmyown.io)
