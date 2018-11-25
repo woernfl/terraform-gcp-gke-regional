@@ -4,10 +4,10 @@ A terraform module to create a managed Kubernetes cluster on GCP GKE.
 
 ## Prerequisites
 
-- Install Tarraform: <https://www.terraform.io/intro/getting-started/install.html>
-- Create GCP authetification JSon file: <https://www.terraform.io/docs/providers/google/index.html>
-- Install kubectl: <https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl>
-- Install gcloud: <https://cloud.google.com/sdk/downloads>
+- [Install Tarraform](https://www.terraform.io/intro/getting-started/install.html)
+- [Create GCP authetification JSon file](https://www.terraform.io/docs/providers/google/index.html)
+- [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
+- [Install gcloud](https://cloud.google.com/sdk/downloads)
 
 ## Create GKE cluster
 
