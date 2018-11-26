@@ -3,7 +3,7 @@ resource "null_resource" "client_gke_credentials" {
     command = "gcloud beta container clusters get-credentials ${var.cluster_name} --region ${var.region} --project ${var.gcp_project_id}"
   }
 
-  depends_on = ["google_container_cluster.primary"]
+  depends_on = ["module.gke-regional"]
 
   provisioner "local-exec" {
     when    = "destroy"

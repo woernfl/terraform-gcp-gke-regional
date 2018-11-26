@@ -12,6 +12,10 @@ resource "google_container_cluster" "primary" {
     image_type   = "${var.image_type}"
     machine_type = "${var.machine_type}"
     preemptible  = "${var.preemptible_node}"
+
+    workload_metadata_config {
+      node_metadata = "${var.workload_metadata_config}"
+    }
   }
 
   # Set a maintancence window
@@ -44,5 +48,11 @@ resource "google_container_cluster" "primary" {
     network_policy_config {
       disabled = "${var.network_policy_config}"
     }
+  }
+
+  timeouts {
+    create = "30m"
+    update = "30m"
+    delete = "30m"
   }
 }

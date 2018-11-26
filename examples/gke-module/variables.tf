@@ -46,6 +46,11 @@ variable "preemptible_node" {
   description = "Choose if nodes should be preemptible ones or not. Set to true to have preemptible nodes"
 }
 
+# Choose if the Metadate should be expose to the node pool
+variable "workload_metadata_config" {
+  description = "Metadata configuration to expose to workloads on the node pool (UNSPECIFIED/SECURE/EXPOSE)"
+}
+
 # Daily maintenance window start time (duration will always be the minimum one)
 variable "daily_maintenance_window_start_time" {
   description = "Daily maintenance window start time (format 'HH:MM', where HH : [00-23] and MM : [00-59] GMT)"

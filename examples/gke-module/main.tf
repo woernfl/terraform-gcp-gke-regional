@@ -6,7 +6,7 @@ provider "google-beta" {
 
 module "gke-regional" {
   source  = "woernfl/gke-regional/gcp"
-  version = "1.0.1"
+  version = "1.0.3"
 
   gcp_project_id                      = "${var.gcp_project_id}"
   cluster_name                        = "${var.cluster_name}"
@@ -16,6 +16,7 @@ module "gke-regional" {
   image_type                          = "${var.image_type}"
   machine_type                        = "${var.machine_type}"
   preemptible_node                    = "${var.preemptible_node}"
+  workload_metadata_config            = "${var.workload_metadata_config}"
   daily_maintenance_window_start_time = "${var.daily_maintenance_window_start_time}"
   http_load_balancing                 = "${var.http_load_balancing}"
   horizontal_pod_autoscaling          = "${var.horizontal_pod_autoscaling}"
