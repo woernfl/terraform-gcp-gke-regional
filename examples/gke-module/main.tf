@@ -6,11 +6,13 @@ provider "google-beta" {
 
 module "gke-regional" {
   source  = "woernfl/gke-regional/gcp"
-  version = "1.0.3"
+  version = "1.0.4"
 
   gcp_project_id                      = "${var.gcp_project_id}"
   cluster_name                        = "${var.cluster_name}"
   initial_node_count                  = "${var.initial_node_count}"
+  logging_service                     = "${var.logging_service}"
+  monitoring_service                  = "${var.monitoring_service}"
   region                              = "${var.region}"
   kube_version                        = "${var.kube_version}"
   image_type                          = "${var.image_type}"

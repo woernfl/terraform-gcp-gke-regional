@@ -15,7 +15,17 @@ variable "initial_node_count" {
   description = "Number of nodes to be created per node"
 }
 
-# Zone where the master will be deployed
+# Logging service that will be used
+variable "logging_service" {
+  description = "Logging service that will be used"
+}
+
+# Monitoring service that will be used
+variable "monitoring_service" {
+  description = "Monitoring service that will be used"
+}
+
+# Region where the node will be deployed
 variable "region" {
   description = "Region where the nodes will be deployed"
 }

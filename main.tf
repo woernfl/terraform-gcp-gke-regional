@@ -3,6 +3,8 @@ resource "google_container_cluster" "primary" {
   name               = "${var.cluster_name}"
   region             = "${var.region}"
   initial_node_count = "${var.initial_node_count}"
+  logging_service    = "${var.logging_service}"
+  monitoring_service = "${var.monitoring_service}"
 
   # Master node version
   min_master_version = "${var.kube_version}"
@@ -50,6 +52,7 @@ resource "google_container_cluster" "primary" {
     }
   }
 
+  # Modifing default timeout
   timeouts {
     create = "30m"
     update = "30m"

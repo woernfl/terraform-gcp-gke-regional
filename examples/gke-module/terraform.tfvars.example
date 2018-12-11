@@ -6,6 +6,10 @@ cluster_name = "cluster-1"
 
 initial_node_count = "1"
 
+logging_service = "logging.googleapis.com/kubernetes"
+
+monitoring_service = "monitoring.googleapis.com/kubernetes"
+
 region = "europe-west1"
 
 kube_version = "1.10"
