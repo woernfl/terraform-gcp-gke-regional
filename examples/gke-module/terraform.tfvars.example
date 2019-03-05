@@ -12,7 +12,7 @@ monitoring_service = "monitoring.googleapis.com/kubernetes"
 
 region = "europe-west1"
 
-kube_version = "1.10"
+kube_version = "1.12"
 
 image_type = "COS"
 
