@@ -1,7 +1,7 @@
 resource "google_container_cluster" "primary" {
   provider           = "google-beta"
   name               = "${var.cluster_name}"
-  region             = "${var.region}"
+  location = "${var.region}"
   initial_node_count = "${var.initial_node_count}"
   logging_service    = "${var.logging_service}"
   monitoring_service = "${var.monitoring_service}"
@@ -31,6 +31,9 @@ resource "google_container_cluster" "primary" {
   master_auth {
     username = ""
     password = ""
+    client_certificate_config {
+      issue_client_certificate = false
+    }
   }
 
   # Addons availables
