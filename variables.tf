@@ -1,19 +1,7 @@
-######## GCP provide ########
-# GCP project ID
-variable "gcp_project_id" {
-  description = "GCP Project ID"
-}
-
 ######## GKE vars ########
 # Name of the GKE cluster
 variable "cluster_name" {
   description = "Name of the cluster"
-}
-
-# Name of the network the cluster will be part of
-variable "network" {
-  description = "Name of the network the cluster will be part of"
-  default     = "default"
 }
 
 # Number of nodes per zone
@@ -31,12 +19,24 @@ variable "monitoring_service" {
   description = "Monitoring service that will be used"
 }
 
-# Region where the node will be deployed
+# Region where the cluster will be deployed
 variable "region" {
-  description = "Region where the nodes will be deployed"
+  description = "Region where the cluster will be deployed"
 }
 
 ######## GKE worker nodes configuration variables ########
+# Network on which are sitting the nodes
+variable "network" {
+  description = "Name of the network in which the Nodes will be sitting"
+  default     = "default"
+}
+
+# Sub-network on which are sitting the nodes
+variable "subnetwork" {
+  description = "Name of the sub-network in which the Nodes will be sitting"
+  default     = "default"
+}
+
 # Kubernetes version
 variable "kube_version" {
   description = "Kubernetes version"

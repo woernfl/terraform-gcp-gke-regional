@@ -1,7 +1,10 @@
 resource "google_container_cluster" "primary" {
-  provider           = "google-beta"
-  name               = "${var.cluster_name}"
-  location           = "${var.region}"
+  provider   = "google-beta"
+  name       = "${var.cluster_name}"
+  location   = "${var.region}"
+  network    = "${var.network}"
+  subnetwork = "${var.subnetwork}"
+
   initial_node_count = "${var.initial_node_count}"
   logging_service    = "${var.logging_service}"
   monitoring_service = "${var.monitoring_service}"
