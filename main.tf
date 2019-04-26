@@ -57,6 +57,14 @@ resource "google_container_cluster" "primary" {
     network_policy_config {
       disabled = "${var.network_policy_config}"
     }
+
+    istio_config {
+      disabled = "${var.istio_config}"
+    }
+
+    cloudrun_config {
+      disabled = "${var.cloudrun_config}"
+    }
   }
 
   # Modifing default timeout
