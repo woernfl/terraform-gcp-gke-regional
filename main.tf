@@ -65,7 +65,7 @@ resource "google_container_cluster" "primary" {
   }
 }
 
-resource "google_container_node_pool" "primary_preemptible_nodes" {
+resource "google_container_node_pool" "node_pool" {
   count      = "${length(var.node_pools)}"
   provider   = "google-beta"
   name       = "${lookup(var.node_pools[count.index], "name")}"
