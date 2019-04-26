@@ -10,6 +10,12 @@ variable "cluster_name" {
   description = "Name of the cluster"
 }
 
+# Name of the network the cluster will be part of
+variable "network" {
+  description = "Name of the network the cluster will be part of"
+  default     = "default"
+}
+
 # Number of nodes per zone
 variable "initial_node_count" {
   description = "Number of nodes to be created per node"
