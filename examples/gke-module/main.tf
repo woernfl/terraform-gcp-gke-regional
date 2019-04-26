@@ -7,7 +7,7 @@ provider "google-beta" {
 
 module "gke-regional" {
   source  = "woernfl/gke-regional/gcp"
-  version = "2.0.0"
+  version = "2.0.1"
 
   cluster_name                        = "${var.cluster_name}"
   logging_service                     = "${var.logging_service}"
