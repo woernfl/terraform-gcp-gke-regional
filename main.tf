@@ -5,23 +5,13 @@ resource "google_container_cluster" "primary" {
   network    = "${var.network}"
   subnetwork = "${var.subnetwork}"
 
-  initial_node_count = "${var.initial_node_count}"
-  logging_service    = "${var.logging_service}"
-  monitoring_service = "${var.monitoring_service}"
+  remove_default_node_pool = true
+  initial_node_count       = "1"
+  logging_service          = "${var.logging_service}"
+  monitoring_service       = "${var.monitoring_service}"
 
   # Master node version
   min_master_version = "${var.kube_version}"
-
-  # Worker Node configuration
-  node_config {
-    image_type   = "${var.image_type}"
-    machine_type = "${var.machine_type}"
-    preemptible  = "${var.preemptible_node}"
-
-    workload_metadata_config {
-      node_metadata = "${var.workload_metadata_config}"
-    }
-  }
 
   # Set a maintancence window
   maintenance_policy {
@@ -72,5 +62,30 @@ resource "google_container_cluster" "primary" {
     create = "30m"
     update = "30m"
     delete = "30m"
+  }
+}
+
+resource "google_container_node_pool" "primary_preemptible_nodes" {
+  count      = "${length(var.node_pools)}"
+  provider   = "google-beta"
+  name       = "${lookup(var.node_pools[count.index], "name")}"
+  location   = "${var.region}"
+  cluster    = "${google_container_cluster.primary.name}"
+  node_count = "${lookup(var.node_pools[count.index], "node_count")}"
+
+  management {
+    auto_repair  = "${lookup(var.node_pools[count.index], "auto_repair")}"
+    auto_upgrade = "${lookup(var.node_pools[count.index], "auto_upgrade")}"
+  }
+
+  # Worker Node configuration
+  node_config {
+    image_type   = "${lookup(var.node_pools[count.index], "image_type")}"
+    machine_type = "${lookup(var.node_pools[count.index], "machine_type")}"
+    preemptible  = "${lookup(var.node_pools[count.index], "preemptible")}"
+
+    workload_metadata_config {
+      node_metadata = "${lookup(var.node_pools[count.index], "node_metadata")}"
+    }
   }
 }

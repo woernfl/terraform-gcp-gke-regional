@@ -4,8 +4,6 @@ gcp_project_id = ""
 
 cluster_name = "cluster-1"
 
-initial_node_count = "1"
-
 logging_service = "logging.googleapis.com/kubernetes"
 
 monitoring_service = "monitoring.googleapis.com/kubernetes"
@@ -13,14 +11,6 @@ monitoring_service = "monitoring.googleapis.com/kubernetes"
 region = "europe-west1"
 
 kube_version = "1.12"
-
-image_type = "COS"
-
-machine_type = "f1-micro"
-
-preemptible_node = true
-
-workload_metadata_config = "SECURE"
 
 daily_maintenance_window_start_time = "00:00"
 
@@ -30,4 +20,57 @@ horizontal_pod_autoscaling = false
 
 kubernetes_dashboard = true
 
-network_policy_config = false
+network_policy_config = true
+
+node_pools = [
+    {
+      # Node pool name
+      name = "node-pool-1"
+
+      # Number of nodes per zone
+      node_count = "2"
+
+      # Node auto repair option
+      auto_repair = "false"
+
+      # Node auto upgrade option
+      auto_upgrade = "false"
+
+      # Worker nodes image type
+      image_type = "COS"
+
+      # Worker nodes type
+      machine_type = "n1-standard-2"
+
+      # Worker nodes preemptible choice
+      preemptible = "false"
+
+      # Choose if the Metadate should be expose to the node pool
+      node_metadata = "SECURE"
+    },
+    {
+      # Node pool name
+      name = "node-pool-2"
+
+      # Number of nodes per zone
+      node_count = "1"
+
+      # Node auto repair option
+      auto_repair = "true"
+
+      # Node auto upgrade option
+      auto_upgrade = "true"
+
+      # Worker nodes image type
+      image_type = "COS"
+
+      # Worker nodes type
+      machine_type = "n1-standard-1"
+
+      # Worker nodes preemptible choice
+      preemptible = "true"
+
+      # Choose if the Metadate should be expose to the node pool
+      node_metadata = "SECURE"
+    },
+  ]

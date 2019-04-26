@@ -4,11 +4,6 @@ variable "cluster_name" {
   description = "Name of the cluster"
 }
 
-# Number of nodes per zone
-variable "initial_node_count" {
-  description = "Number of nodes to be created per node"
-}
-
 # Logging service that will be used
 variable "logging_service" {
   description = "Logging service that will be used"
@@ -24,42 +19,21 @@ variable "region" {
   description = "Region where the cluster will be deployed"
 }
 
-######## GKE worker nodes configuration variables ########
-# Network on which are sitting the nodes
+# Network on which is sitting the cluster
 variable "network" {
-  description = "Name of the network in which the Nodes will be sitting"
+  description = "Name of the network in which the cluster will be sitting"
   default     = "default"
 }
 
-# Sub-network on which are sitting the nodes
+# Sub-network on which is sitting the cluster
 variable "subnetwork" {
-  description = "Name of the sub-network in which the Nodes will be sitting"
+  description = "Name of the sub-network in which the cluster will be sitting"
   default     = "default"
 }
 
 # Kubernetes version
 variable "kube_version" {
   description = "Kubernetes version"
-}
-
-# Worker nodes image type
-variable "image_type" {
-  description = "Worker nodes image type"
-}
-
-# Worker nodes type
-variable "machine_type" {
-  description = "Worker machine type"
-}
-
-# Worker nodes preemptible choice
-variable "preemptible_node" {
-  description = "Choose if nodes should be preemptible ones or not. Set to true to have preemptible nodes"
-}
-
-# Choose if the Metadate should be expose to the node pool
-variable "workload_metadata_config" {
-  description = "Metadata configuration to expose to workloads on the node pool (UNSPECIFIED/SECURE/EXPOSE)"
 }
 
 # Daily maintenance window start time (duration will always be the minimum one)
@@ -97,4 +71,38 @@ variable "istio_config" {
 variable "cloudrun_config" {
   description = "Should cloudrun_config addon be disabled? (true/false)"
   default     = "true"
+}
+
+######## GKE worker nodes configuration variables ########
+# List of map containing all node pools infos
+variable "node_pools" {
+  description = "All variables regarding nodes are expressed here"
+
+  default = [
+    {
+      # Node pool name
+      name = "default-pool"
+
+      # Number of nodes per zone
+      node_count = "1"
+
+      # Node auto repair option
+      auto_repair = "true"
+
+      # Node auto upgrade option
+      auto_upgrade = "true"
+
+      # Worker nodes image type
+      image_type = "COS"
+
+      # Worker nodes type
+      machine_type = "n1-standard-1"
+
+      # Worker nodes preemptible choice
+      preemptible = "false"
+
+      # Choose if the Metadate should be expose to the node pool
+      node_metadata = "SECURE"
+    },
+  ]
 }
